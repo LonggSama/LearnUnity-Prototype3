@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] private GameObject[] obstaclePrefab;
     [SerializeField] private Vector3 spawnPosition = new Vector3(25, 0 , 0);
     [SerializeField] private float startDelay = 0.5f;
     [SerializeField] private float repeatTime = 2f;
+
     private PlayerController playerControllerScipt;
 
     // Start is called before the first frame update
@@ -23,11 +24,14 @@ public class SpawnManager : MonoBehaviour
         
     }
 
+
+    // Spawn Ostacle
     private void spawnObstacle()
     {
-        if (playerControllerScipt.gameOver == false)
+        int ostacleIndex = Random.Range(0, obstaclePrefab.Length);
+        if (playerControllerScipt.gameOver == false && playerControllerScipt.gameStart)
         {
-            Instantiate(obstaclePrefab, spawnPosition, obstaclePrefab.transform.rotation);
+            Instantiate(obstaclePrefab[ostacleIndex], spawnPosition, obstaclePrefab[ostacleIndex].transform.rotation);
         }
     }
 }
