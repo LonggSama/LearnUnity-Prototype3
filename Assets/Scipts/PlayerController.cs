@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ParticleSystem dirtParticle;
     [SerializeField] private float jumpForce = 10;
     [SerializeField] private float gravityModifier;
+    [SerializeField] private GameObject dirt;
 
     public float playerSpeed = 1.5f;
     public int startPoint = 4;
@@ -39,6 +40,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameStart)
+        {
+            dirt.SetActive(false);
+        }
+        else if (gameStart)
+        {
+            dirt.SetActive(true);
+        }
         playerJump();
         superSpeed();
         PlayerMove();
@@ -109,7 +118,4 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetFloat("Speed_f", 1f);
         }
     }
-
-    //Hide Dirt Particle
-    void 
 }
