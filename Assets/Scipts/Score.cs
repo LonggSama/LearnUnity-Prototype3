@@ -33,7 +33,7 @@ public class Score : MonoBehaviour
     // Update Score
     void UpdateScore()
     {
-        if (!playerController.gameOver)
+        if (!playerController.gameOver && playerController.gameStart)
         {
             if (playerController.isSuperSpeed)
             {
